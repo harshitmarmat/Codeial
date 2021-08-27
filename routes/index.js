@@ -13,6 +13,6 @@ router.use('/users',require('./users_router'));
 //router.use('/routeName', require('/routerfile'));
 router.use('/post',require('./post_routes'));
 
-router.use('/',require('./account_router'));
+router.use('/users',require('./account_router'));
 
 module.exports = router ;

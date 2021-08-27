@@ -1,8 +1,20 @@
+const { urlencoded } = require('express');
 const express = require('express');
 
 const app = express();
 
 const port = 8000;
+const db = require('./config/mongoose');
+//cookie
+const cookieParser = require('cookie-parser');
+//layout
+const expressLayouts = require('express-ejs-layouts');
+
+
+app.use(urlencoded());
+app.use(cookieParser());
+app.use(expressLayouts);
+
 
 app.use('/',require('./routes/'));
 // const routes = require('./routes/');
