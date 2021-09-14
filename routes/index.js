@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const userController = require('../controller/users_controller');
 console.log('routes are set up');
 const homeController = require('../controller/home_controller');
 const { route } = require('./users_router');
@@ -11,6 +11,8 @@ router.use('/users',require('./users_router'));
 
 //for any further routes,access from here
 //router.use('/routeName', require('/routerfile'));
+router.get('/',userController.home);
+
 router.use('/post',require('./post_routes'));
 
 router.use('/users',require('./account_router'));

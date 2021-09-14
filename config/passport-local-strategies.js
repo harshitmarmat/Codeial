@@ -18,8 +18,9 @@ passport.use(new LocalStrategy({
                 console.log('Invalid User/Password');
                 return done(null,false);
             }
+            console.log("found user");
             return done(null,user);
-        })
+        });
     }
 ));
 
@@ -39,4 +40,18 @@ passport.deserializeUser(function(id, done){
     });
 });
 
+//check the user is authenticated 
+passport.checkAuthentication = function(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    return res.redirect('/users/sign-in');
+}
+
+passport.setAuthenticatedUser = function(req , res , next){
+    if(req.isAuthenticated()){
+        res.locals.user = req.user;
+    }
+    next();
+}
 module.exports = passport;
